@@ -44,4 +44,9 @@ RUN sed -ri 's/^#PasswordAuthentication/PasswordAuthentication/' /etc/ssh/sshd_c
 RUN sed -ri 's/^PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
 RUN sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
 
-CMD ["/usr/sbin/sshd", "-D"]
+ADD run.sh /tmp/run.sh
+RUN chmod u+x /tmp/run.sh
+
+# start run!
+CMD ["./tmp/run.sh"]
+

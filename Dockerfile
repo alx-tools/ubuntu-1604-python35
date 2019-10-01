@@ -26,7 +26,7 @@ RUN pip3 install pycodestyle
 RUN pip3 install SQLAlchemy
 RUN pip3 install sqlalchemy
 RUN pip3 install sqlalchemy --upgrade
-RUN pip3 install mysqlclient
+RUN pip3 install mysqlclient==1.3.10
 
 # Set the locale
 RUN apt-get install -y locales

@@ -1,6 +1,8 @@
 FROM holbertonschool/base-ubuntu-1604
 MAINTAINER Guillaume Salva <guillaume@holbertonschool.com>
 
+RUN apt-get update
+
 # MySQL
 RUN echo "mysql-community-server mysql-community-server/data-dir select ''" | debconf-set-selections
 RUN echo "mysql-community-server mysql-community-server/root-pass password root" | debconf-set-selections

@@ -11,9 +11,12 @@ RUN echo "mysql-server-5.7 mysql-server/root_password password root" | debconf-s
 RUN echo "mysql-server-5.7 mysql-server/root_password_again password root" | debconf-set-selections
 RUN apt-get install -y --force-yes mysql-server-5.7
 RUN apt-get install -y --force-yes libmysqlclient-dev
+RUN apt-get install -y libssl-dev
 
 # Pip
-RUN apt-get install -y python3-pip
+RUN apt-get install -y python3.5-dev
+RUN curl -O https://bootstrap.pypa.io/pip/3.5/get-pip.py
+RUN python3 get-pip.py
 RUN pip3 install pep8
 RUN pip3 install pycodestyle
 

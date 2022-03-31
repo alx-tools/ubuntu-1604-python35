@@ -26,7 +26,7 @@ RUN pip3 install pycodestyle
 RUN pip3 install SQLAlchemy
 RUN pip3 install sqlalchemy
 RUN pip3 install sqlalchemy --upgrade
-RUN pip3 install mysqlclient
+RUN pip3 install mysqlclient==1.3.10
 
 # Set the locale
 RUN apt-get install -y locales
@@ -44,9 +44,8 @@ RUN sed -ri 's/^#PasswordAuthentication/PasswordAuthentication/' /etc/ssh/sshd_c
 RUN sed -ri 's/^PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
 RUN sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
 
-ADD run.sh /tmp/run.sh
-RUN chmod u+x /tmp/run.sh
+ADD run.sh /etc/sandbox_run.sh
+RUN chmod u+x /etc/sandbox_run.sh
 
 # start run!
-CMD ["./tmp/run.sh"]
-
+CMD ["./etc/sandbox_run.sh"]
